@@ -1,14 +1,16 @@
-* README *
+# VGG DDVCS
 
 Python routine to do a global fits of DVCS experimental data to the KM parametrization using Gepard.
 
 main.pý perform the fits. 
 - Configuration must be chosen on the code itself
 - Fit result stores in a json file (as it takes a few days to be done)
+- This work is based on KK Matters Arisin notebook
 
 **Used Datasets are**
 - GLO15b : Dataset used to fit the KM15 model
 - pts_Volker = g.dset[7] + g.dset[98] + g.dset[100] : Dataset used for the proton-pressure extraction of [Volker](https://misportal.jlab.org/sti/publications/14962/attachments/1228/JLAB-PHY-17-2536.pdf)
+	- Notice the repply from [Kresimir](https://wwwcompass.cern.ch/compass/gpd/meetings/2022/Pressure_Nature2019_Kumericki_s41586-019-1211-6.pdf) where he cannot reproduce the curve and wonders if there is a factor missing. [See Jupyter Notebook](https://github.com/openhep/dterm18)
 - ME = g.dset[999] : Defined in this scope, are my DVCS BSA measurements without proton detection
 
 **Theory objects**
