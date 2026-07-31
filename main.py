@@ -10,7 +10,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 import gepard as g
-from gepard.fits import th_KM15
+from gepard.fits import th_KM15, KM15
 from gepard.fits import th_AFKM12
 from gepard.fits import GLO15b
 from gepard import cff, data, dvcs, eff, gpd
@@ -111,7 +111,7 @@ class CFFPlotter:
 
         return fig
         
-class KMA(eff.KellyEFF, gpd.PWNormGPD, cff.HybridFreePoleCFF, dvcs.BM10tw2):  # noqa: D101, E501
+class KMA(KM15):  # noqa: D101, E501
     def subtraction(self, pt):
         #Dispersion relations subtraction constant.
         return self.parameters['C']/(1.-pt.t/self.parameters['mC2'])**3
@@ -211,11 +211,11 @@ if(False):
 	}
 
 	# Save to a JSON file
-	with open(f"fit_result_{model_name}.json", "w") as fitres:
+	with open(f"Global_Fit_{model_name}.json", "w") as fitres:
 	    json.dump(fit_results, fitres, indent=4)
 else:
 	# Load saved fit results
-	with open(f"fit_result_{model_name}.json", "r") as fitres:
+	with open(f"Global_Fit_{model_name}.json", "r") as fitres:
 	    fit_results = json.load(fitres)
 
 	# Restore Minuit values

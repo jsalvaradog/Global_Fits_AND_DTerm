@@ -10,7 +10,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 import gepard as g
-from gepard.fits import th_KM15
+from gepard.fits import th_KM15, KM15
 from gepard.fits import th_AFKM12
 from gepard.fits import GLO15b
 from gepard import cff, data, dvcs, eff, gpd
@@ -78,44 +78,67 @@ class CFFPlotter:
 
         return np.array(values), np.array(errors)
 
-    def plot(self):
+    def plot(self, ax=None, label_prefix=""):
         """
         Produce ImH and ReH plots with uncertainty bands.
+
+        Parameters
+        ----------
+        ax : matplotlib.axes.Axes, optional
+            Existing axes to plot on. If None, a new figure and axes are created.
+        label_prefix : str, optional
+            Prefix added to legend labels (e.g. theory name or fit identifier).
+
+        Returns
+        -------
+        fig : matplotlib.figure.Figure
+            The figure containing the plot.
         """
 
-        fig, ax = plt.subplots(figsize=(8, 6))
+        if ax is None:
+            fig, ax = plt.subplots(figsize=(8, 6))
+        else:
+            fig = ax.figure
 
-        for cff, color in zip(["ImH", "ReH"], ["C0", "C1"]):
+        plt.subplots_adjust(left=0.15, right=0.95, top=0.95, bottom=0.15)
 
+        cff_labels = {
+            "ImH": r"$\mathfrak{Im}[\mathcal{H}]$",
+            "ReH": r"$\mathfrak{Re}[\mathcal{H}]$"
+        }
+        
+        for cff in ["ImH", "ReH"]:
             y, dy = self.predict_cff(cff)
+
+            label = f"{label_prefix} {cff_labels[cff]}".strip()
 
             ax.plot(
                 self.xi,
-                y,
-                label=cff
+                y
             )
 
             ax.fill_between(
                 self.xi,
                 y - dy,
                 y + dy,
-                alpha=0.3
+                alpha=0.3,
+                label=label
             )
 
-        #ax.set_xscale("log")
-        ax.set_xlabel(r"$\xi$")
-        ax.set_ylabel(r"$\xi*$CFF")
+        ax.set_xlabel(r"$\xi$", fontsize=25)
+        ax.set_ylabel(r"$\xi*$CFF", fontsize=25)
+        ax.tick_params(axis='both', labelsize=20)
 
-        ax.legend()
+        ax.legend(fontsize=16)
+        
         ax.grid(True)
 
         return fig
         
-class KMA(eff.KellyEFF, gpd.PWNormGPD, cff.HybridFreePoleCFF, dvcs.BM10tw2):  # noqa: D101, E501
+class KMA(KM15):  # noqa: D101, E501
     def subtraction(self, pt):
         #Dispersion relations subtraction constant.
         return self.parameters['C']/(1.-pt.t/self.parameters['mC2'])**3
-
 
 class KMA_H(KMA):
   def subtraction(self, pt):
@@ -145,37 +168,8 @@ params['text.latex.preamble'] = '\n'.join(params['text.latex.preamble'])
 plt.rcParams.update(params)
 
 #########################
-# datasets
-#########################
-
-pts_Volker = g.dset[7] + g.dset[98] + g.dset[100]
-#g.describe_data(pts_Volker)
-#pts_Volker
-
-g.describe_data(GLO15b)
-GLO15b
-
-# My measurements without proton
-data={}
-data_file_path = "./BSA-CLAS12-JSAG.dat"
-with open(data_file_path, 'r', encoding='utf-8') as f:
-    file_content = f.read()
-dataset = g.DataSet(datafile=file_content)
-for pt in dataset:
-    pt.to_conventions()
-data[dataset.id] = dataset
-g.dset.update(data)
-g.describe_data(g.dset[999])
-
-#########################
 # Create model and fit
 #########################
-
-#th = KMA_H()
-th = KMA()
-#th = th_KM15;
-model_name = 'KMA'
-th.name = model_name
 
 par_KMA = {'tmv2': 15.94293227053628, 'rS': 1.0, 'alv': 0.43, 'tal': 0.43,
             'mpi2': 15.999998816676918, 'Nv': 1.35, 'rv': 0.918393047884448,
@@ -191,63 +185,94 @@ par_KMA = {'tmv2': 15.94293227053628, 'rS': 1.0, 'alv': 0.43, 'tal': 0.43,
             'this': -0.36618269477432946, 'al0g': 1.247316701070471, 'alpg': 0.15,
             'mg2': 0.7, 'secg': -2.990809378821039, 'thig': 0.9052207712570559,
             'kaps': 0.0, 'kapg': 0.0}
-th.parameters.update(par_KMA)
-#th._release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
 
-# To save the fitted model
-#f = g.MinuitFitter(pts_Volker + g.dset[999], th)
-#f.release_parameters('rv','bS','bv', 'mC2','C')
-f = g.MinuitFitter(GLO15b, th)
-f.fix_parameters('ALL')
-f.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
-if(False):
-	f.fit()
+th1 = th_KM15;
+th2 = KMA()
+th3 = KMA_H()
 
-	fit_results = {
-	    "values": f.minuit.values.to_dict(),
-	    "errors": f.minuit.errors.to_dict(),
-	    "fval": f.minuit.fval,
-	    "valid": f.minuit.valid,
-	}
+type = "Global_Fit" # "Global_Fit" or "DTerm"
 
-	# Save to a JSON file
-	with open(f"fit_result_{model_name}.json", "w") as fitres:
-	    json.dump(fit_results, fitres, indent=4)
-else:
-	# Load saved fit results
-	with open(f"fit_result_{model_name}.json", "r") as fitres:
-	    fit_results = json.load(fitres)
+model_name_1 = 'KM15'
+model_name_2 = 'KMA'
+model_name_3 = 'KMA'
 
-	# Restore Minuit values
-	for par, val in fit_results["values"].items():
-	    f.minuit.values[par] = val
+th1.name = model_name_1
+th2.name = model_name_2
+th3.name = model_name_3
 
-	# Restore Minuit errors
-	for par, err in fit_results["errors"].items():
-	    f.minuit.errors[par] = err
+th1.parameters.update(par_KMA)
+th2.parameters.update(par_KMA)
+th3.parameters.update(par_KMA)
 
-	# Synchronize values/errors back to the Gepard theory object
-	f.theory.parameters.update(f.minuit.values.to_dict())
-	f.theory.parameters_errors = f.minuit.errors.to_dict()
+f1 = g.MinuitFitter(GLO15b, th1)
+f2 = g.MinuitFitter(GLO15b, th2)
+f3 = g.MinuitFitter(GLO15b, th3)
 
-	# restore theory parameters
-	th.parameters.update(f.minuit.values.to_dict())
+f1.fix_parameters('ALL')
+f2.fix_parameters('ALL')
+f3.fix_parameters('ALL')
 
-	# restore errors
-	th.parameters_errors = f.minuit.errors.to_dict()
+f1.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
+f2.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
+f3.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
 
-f.print_parameters()
+# Load saved fit results
+with open(f"{type}_{model_name_1}.json", "r") as fitres:
+    fit_results_1 = json.load(fitres)
+with open(f"{type}_{model_name_2}.json", "r") as fitres:
+    fit_results_2 = json.load(fitres)
+with open(f"{type}_{model_name_3}.json", "r") as fitres:
+    fit_results_3 = json.load(fitres)
 
-plotter = CFFPlotter(
-    th,
-    t=-0.2,
-    Q2=10
-)
+# Restore Minuit values
+for par, val in fit_results_1["values"].items():
+    f1.minuit.values[par] = val
+for par, val in fit_results_2["values"].items():
+    f2.minuit.values[par] = val
+for par, val in fit_results_3["values"].items():
+    f3.minuit.values[par] = val
 
-fig = plotter.plot()
+# Restore Minuit errors
+for par, err in fit_results_1["errors"].items():
+    f1.minuit.errors[par] = err
+for par, err in fit_results_2["errors"].items():
+    f2.minuit.errors[par] = err
+for par, err in fit_results_3["errors"].items():
+    f3.minuit.errors[par] = err
+
+# Synchronize values/errors back to the Gepard theory object
+f1.theory.parameters.update(f1.minuit.values.to_dict())
+f2.theory.parameters.update(f2.minuit.values.to_dict())
+f3.theory.parameters.update(f3.minuit.values.to_dict())
+
+f1.theory.parameters_errors = f1.minuit.errors.to_dict()
+f2.theory.parameters_errors = f2.minuit.errors.to_dict()
+f3.theory.parameters_errors = f3.minuit.errors.to_dict()
+
+# restore theory parameters
+th1.parameters.update(f1.minuit.values.to_dict())
+th2.parameters.update(f2.minuit.values.to_dict())
+th3.parameters.update(f3.minuit.values.to_dict())
+
+
+# restore errors
+th1.parameters_errors = f1.minuit.errors.to_dict()
+th2.parameters_errors = f2.minuit.errors.to_dict()
+th3.parameters_errors = f3.minuit.errors.to_dict()
+
+#f.print_parameters()
+
+plotter1 = CFFPlotter(th1, t=-0.2)
+plotter2 = CFFPlotter(th2, t=-0.2)
+plotter3 = CFFPlotter(th3, t=-0.2)
+
+fig, ax = plt.subplots(figsize=(8, 6))
+
+plotter1.plot(ax=ax, label_prefix="KM15")
+plotter2.plot(ax=ax, label_prefix="KMA")
+plotter3.plot(ax=ax, label_prefix="KMA_H")
+
 plt.show()
-plt.savefig(f'figs/{model_name}.pdf')
 
-#th.predict(pts[0], uncertainty=True)
-#pt = g.DataPoint(xB=0.01, t=-0.2, Q2=10)
-#th.predict(pt, observable='ImH', uncertainty=True)
+plt.show()
+plt.savefig(f'figs/Comparison_{type}.pdf')
