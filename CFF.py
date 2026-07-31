@@ -273,6 +273,4 @@ plotter2.plot(ax=ax, label_prefix="KMA")
 plotter3.plot(ax=ax, label_prefix="KMA_H")
 
 plt.show()
-
-plt.show()
 plt.savefig(f'figs/Comparison_{type}.pdf')
