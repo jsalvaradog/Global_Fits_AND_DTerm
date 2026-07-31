@@ -3,6 +3,7 @@
 Python routine to do a global fits of DVCS experimental data to the KM parametrization using Gepard.
 
 **main.py perform the fits.** 
+
 **plot.py creates a plot comparing the effect of the DVCS data at small |t|**
 - Configuration must be chosen on the code itself
 - Fit result stores in a json file (as it takes a few days to be done)
