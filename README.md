@@ -5,7 +5,7 @@ Python routine to do a global fits of DVCS experimental data to the KM parametri
 main.pý perform the fits. 
 - Configuration must be chosen on the code itself
 - Fit result stores in a json file (as it takes a few days to be done)
-- This work is based on KK Matters Arisin notebook
+- This work is based on KK Matters Arising work (see notebook on github)
 
 **Used Datasets are**
 - GLO15b : Dataset used to fit the KM15 model
