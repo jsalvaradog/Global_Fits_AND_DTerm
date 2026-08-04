@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 import gepard as g
 
 class CFFPlotter:
-    def __init__(self, theory, t=-0.2, Q2=10.0, xi_min=0.02, xi_max=0.25, npts=100):
+    def __init__(self, theory, xi=0.1, Q2=10.0, mt_min=0.02, mt_max=1.0, npts=100):
         """
         Plot ImH and ReH as functions of xi for fixed t and Q2.
 
@@ -38,15 +38,15 @@ class CFFPlotter:
             Momentum transfer
         Q2 : float
             Virtuality
-        xi_min, xi_max : float
-            xi range
+        mt_min, mt_max : float
+            |t| range
         npts : int
             Number of points
         """
         self.theory = theory
-        self.t = t
+        self.xi = xi
         self.Q2 = Q2
-        self.xi = np.geomspace(xi_min, xi_max, npts)
+        self.mt = np.geomspace(mt_min, mt_max, npts)
 
     def predict_cff(self, observable):
         """
@@ -55,15 +55,15 @@ class CFFPlotter:
         values = []
         errors = []
 
-        for xi in self.xi:
-
+        for mt in self.mt:
             # Gepard DataPoint expects xB, not xi.
             # Convert xi -> xB: xi = xB/(2-xB)
+            xi=self.xi
             xB = 2 * xi / (1 + xi)
 
             pt = g.DataPoint(
                 xB=xB,
-                t=self.t,
+                t=-1.0*mt,
                 Q2=self.Q2
             )
 
@@ -78,7 +78,7 @@ class CFFPlotter:
 
         return np.array(values), np.array(errors)
 
-    def plot(self, ax=None, label_prefix=""):
+    def plot(self, ax=None, label_prefix="", style=''):
         """
         Produce ImH and ReH plots with uncertainty bands.
 
@@ -112,20 +112,23 @@ class CFFPlotter:
 
             label = f"{label_prefix} {cff_labels[cff]}".strip()
 
-            ax.plot(
-                self.xi,
+            line = ax.plot(
+                self.mt,
                 y
             )
+            color = line[0].get_color()
 
             ax.fill_between(
-                self.xi,
+                self.mt,
                 y - dy,
                 y + dy,
+                hatch=style,
                 alpha=0.3,
-                label=label
+                label=label,
+                edgecolor=color
             )
 
-        ax.set_xlabel(r"$\xi$", fontsize=25)
+        ax.set_xlabel(r"$|t| [\text{GeV}^2/c^4]$", fontsize=25)
         ax.set_ylabel(r"$\xi*$CFF", fontsize=25)
         ax.tick_params(axis='both', labelsize=20)
 
@@ -186,15 +189,15 @@ par_KMA = {'tmv2': 15.94293227053628, 'rS': 1.0, 'alv': 0.43, 'tal': 0.43,
             'mg2': 0.7, 'secg': -2.990809378821039, 'thig': 0.9052207712570559,
             'kaps': 0.0, 'kapg': 0.0}
 
-th1 = th_KM15;
+th1 = KM15()
 th2 = KMA()
-th3 = KMA_H()
+th3 = KM15()
 
 type = "Global_Fit" # "Global_Fit" or "DTerm"
 
 model_name_1 = 'KM15'
-model_name_2 = 'KMA_Volker'
-model_name_3 = 'KMA15_smallt'
+model_name_2 = 'KMA'
+model_name_3 = 'KM15_ME_smallt'
 
 th1.name = model_name_1
 th2.name = model_name_2
@@ -262,15 +265,15 @@ th3.parameters_errors = f3.minuit.errors.to_dict()
 
 #f.print_parameters()
 
-plotter1 = CFFPlotter(th1, t=-0.2)
-plotter2 = CFFPlotter(th2, t=-0.2)
-plotter3 = CFFPlotter(th3, t=-0.2)
+plotter1 = CFFPlotter(th1, xi=0.1)
+plotter2 = CFFPlotter(th2, xi=0.1)
+plotter3 = CFFPlotter(th3, xi=0.1)
 
 fig, ax = plt.subplots(figsize=(8, 6))
 
-plotter1.plot(ax=ax, label_prefix="KM15")
-plotter2.plot(ax=ax, label_prefix="KMA_Volker")
-plotter3.plot(ax=ax, label_prefix="KMA15_smallt")
+plotter1.plot(ax=ax, label_prefix='GLO15b,', style='')
+#plotter2.plot(ax=ax, label_prefix=model_name_2)
+plotter3.plot(ax=ax, label_prefix=r'GLO15b+CLAS12($|t|$$<$$0.12~\text{GeV}^{2}/c^{4})$,', style='//')
 
 plt.show()
 plt.savefig(f'figs/Comparison_{type}.pdf')

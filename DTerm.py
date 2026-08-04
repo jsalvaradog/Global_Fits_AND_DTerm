@@ -82,8 +82,9 @@ class CFFPlotter:
 
         # Sampling from Gaussian/normal distribution using scipy's stats routines
         ss = 200 #  sample size
-        print("D(t=0)=", self.theory.parameters['C'], " +- ", self.theory.parameters_errors['C'])
+        print("\nD(t=0)=", self.theory.parameters['C'], " +- ", self.theory.parameters_errors['C'])
         print("M=", self.theory.parameters['mC2']**0.5, " +- ", self.theory.parameters_errors['mC2']**0.5)
+        
         d0, M, p = -1.0*2.607434678826921*(18./25.)*(5./9.), self.theory.parameters['mC2']**0.5, 3
         d0err = np.sqrt(0.14**2 + 0.33**2) * (18./25.)*(5./9.)
         M2err = np.sqrt(0.1**2 + 0.15**2)
@@ -172,15 +173,15 @@ par_KMA = {'tmv2': 15.94293227053628, 'rS': 1.0, 'alv': 0.43, 'tal': 0.43,
             'mg2': 0.7, 'secg': -2.990809378821039, 'thig': 0.9052207712570559,
             'kaps': 0.0, 'kapg': 0.0}
 
-th1 = th_KM15;
+th1 = KM15()
 th2 = KMA()
-th3 = KMA_H()
+th3 = KM15()
 
 type = "Global_Fit" # "Global_Fit" or "DTerm"
 
 model_name_1 = 'KM15'
-model_name_2 = 'KMA'
-model_name_3 = 'KMA'
+model_name_2 = 'KMA_Volker'
+model_name_3 = 'KM15_ME_smallt'
 
 th1.name = model_name_1
 th2.name = model_name_2
@@ -193,14 +194,6 @@ th3.parameters.update(par_KMA)
 f1 = g.MinuitFitter(GLO15b, th1)
 f2 = g.MinuitFitter(GLO15b, th2)
 f3 = g.MinuitFitter(GLO15b, th3)
-
-f1.fix_parameters('ALL')
-f2.fix_parameters('ALL')
-f3.fix_parameters('ALL')
-
-f1.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
-f2.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
-f3.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
 
 # Load saved fit results
 with open(f"{type}_{model_name_1}.json", "r") as fitres:
@@ -247,6 +240,14 @@ th2.parameters_errors = f2.minuit.errors.to_dict()
 th3.parameters_errors = f3.minuit.errors.to_dict()
 
 #f.print_parameters()
+f1.fix_parameters('ALL')
+f2.fix_parameters('ALL')
+f3.fix_parameters('ALL')
+
+f1.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
+f2.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
+f3.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
+
 
 plotter1 = CFFPlotter(th1)
 plotter2 = CFFPlotter(th2)
@@ -254,9 +255,9 @@ plotter3 = CFFPlotter(th3)
 
 fig, ax = plt.subplots(figsize=(8, 6))
 
-plotter1.plot(ax=ax, label_prefix="KM15")
-plotter2.plot(ax=ax, label_prefix="KMA")
-plotter3.plot(ax=ax, label_prefix="KMA_H")
+plotter1.plot(ax=ax, label_prefix=model_name_1)
+plotter2.plot(ax=ax, label_prefix=model_name_2)
+plotter3.plot(ax=ax, label_prefix=model_name_3)
 
 plt.show()
 

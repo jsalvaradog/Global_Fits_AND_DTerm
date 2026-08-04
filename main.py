@@ -176,8 +176,8 @@ g.describe_data(g.dset[999])
 
 #th = KMA_H()
 th = KMA()
-#th = th_KM15;
-model_name = 'KMA_Volker'
+#th = KM15();
+model_name = 'KMA_ME_smallt'
 th.name = model_name
 
 par_KMA = {'tmv2': 15.94293227053628, 'rS': 1.0, 'alv': 0.43, 'tal': 0.43,
@@ -198,7 +198,7 @@ th.parameters.update(par_KMA)
 #th._release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
 
 # To save the fitted model
-f = g.MinuitFitter(pts_Volker, th)
+f = g.MinuitFitter(pts_Volker + g.select(g.dset[999], criteria=['tm < 0.12', 'val != 0']), th)
 #f = g.MinuitFitter(GLO15b + g.dset[999], th)
 f.fix_parameters('ALL')
 #f.release_parameters('rv','bS','bv', 'mC2','C')
