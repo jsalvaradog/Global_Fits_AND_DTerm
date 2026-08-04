@@ -193,8 +193,8 @@ th3 = KMA_H()
 type = "Global_Fit" # "Global_Fit" or "DTerm"
 
 model_name_1 = 'KM15'
-model_name_2 = 'KMA'
-model_name_3 = 'KMA'
+model_name_2 = 'KMA_Volker'
+model_name_3 = 'KMA15_smallt'
 
 th1.name = model_name_1
 th2.name = model_name_2
@@ -269,8 +269,8 @@ plotter3 = CFFPlotter(th3, t=-0.2)
 fig, ax = plt.subplots(figsize=(8, 6))
 
 plotter1.plot(ax=ax, label_prefix="KM15")
-plotter2.plot(ax=ax, label_prefix="KMA")
-plotter3.plot(ax=ax, label_prefix="KMA_H")
+plotter2.plot(ax=ax, label_prefix="KMA_Volker")
+plotter3.plot(ax=ax, label_prefix="KMA15_smallt")
 
 plt.show()
 plt.savefig(f'figs/Comparison_{type}.pdf')
