@@ -21,10 +21,6 @@ import json
 if not os.path.exists('figs'):
     os.makedirs('figs')
 
-import numpy as np
-import matplotlib.pyplot as plt
-import gepard as g
-
 class CFFPlotter:
     def __init__(self, theory, t=-0.2, Q2=10.0, xi_min=0.02, xi_max=0.25, npts=100):
         """
@@ -169,6 +165,10 @@ data[dataset.id] = dataset
 g.dset.update(data)
 print('\nJSAG')
 g.describe_data(g.dset[999])
+print('\nJSAG Small |t|')
+pts_Me = g.select(g.dset[999], criteria=['val != 0'])
+#pts_Me = g.select(g.dset[999], criteria=['tm < 0.12', 'val != 0'])
+g.describe_data(pts_Me)
 
 #########################
 # Create model and fit
@@ -177,7 +177,7 @@ g.describe_data(g.dset[999])
 #th = KMA_H()
 th = KMA()
 #th = KM15();
-model_name = 'KMA_ME_smallt'
+model_name = 'KMA_ME'
 th.name = model_name
 
 par_KMA = {'tmv2': 15.94293227053628, 'rS': 1.0, 'alv': 0.43, 'tal': 0.43,
@@ -198,8 +198,8 @@ th.parameters.update(par_KMA)
 #th._release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
 
 # To save the fitted model
-f = g.MinuitFitter(pts_Volker + g.select(g.dset[999], criteria=['tm < 0.12', 'val != 0']), th)
-#f = g.MinuitFitter(GLO15b + g.dset[999], th)
+#f = g.MinuitFitter(pts_Volker + pts_Me, th)
+f = g.MinuitFitter(GLO15b + pts_Me, th)
 f.fix_parameters('ALL')
 #f.release_parameters('rv','bS','bv', 'mC2','C')
 f.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')

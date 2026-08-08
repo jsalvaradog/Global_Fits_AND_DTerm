@@ -85,9 +85,9 @@ class CFFPlotter:
         print("\nD(t=0)=", self.theory.parameters['C'], " +- ", self.theory.parameters_errors['C'])
         print("M=", self.theory.parameters['mC2']**0.5, " +- ", self.theory.parameters_errors['mC2']**0.5)
         
-        d0, M, p = -1.0*2.607434678826921*(18./25.)*(5./9.), self.theory.parameters['mC2']**0.5, 3
-        d0err = np.sqrt(0.14**2 + 0.33**2) * (18./25.)*(5./9.)
-        M2err = np.sqrt(0.1**2 + 0.15**2)
+        d0, M, p = -1.0*self.theory.parameters['C'], self.theory.parameters['mC2']**0.5, 3
+        d0err = self.theory.parameters_errors['C']
+        M2err = self.theory.parameters_errors['mC2']
         Merr = M2err/2/M
 
         d0MC = norm.rvs(d0, d0err, size=ss)
@@ -179,9 +179,9 @@ th3 = KM15()
 
 type = "Global_Fit" # "Global_Fit" or "DTerm"
 
-model_name_1 = 'KM15'
+model_name_1 = 'KMA'
 model_name_2 = 'KMA_Volker'
-model_name_3 = 'KM15_ME_smallt'
+model_name_3 = 'KMA_ME_smallt_pool'
 
 th1.name = model_name_1
 th2.name = model_name_2
