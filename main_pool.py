@@ -24,6 +24,8 @@ import atexit
 if not os.path.exists('figs'):
     os.makedirs('figs')
 
+if not os.path.exists('Fits'):
+    os.makedirs('Fits')
 
 class CFFPlotter:
     def __init__(self, theory, t=-0.2, Q2=10.0, xi_min=0.02, xi_max=0.25, npts=100):
@@ -149,17 +151,17 @@ plt.rcParams.update(params)
 #########################
 # + g.dset[98]
 pts_Volker = g.select(g.dset[7] + g.dset[100], criteria=['val != 0'])
-print('\nVOLKER DATAPOINTS')
-g.describe_data(pts_Volker)
+#print('\nVOLKER DATAPOINTS')
+#g.describe_data(pts_Volker)
 #pts_Volker
 
-print('\nKM15 DATAPOINTS')
-g.describe_data(GLO15b)
-GLO15b
+#print('\nKM15 DATAPOINTS')
+#g.describe_data(GLO15b)
+#GLO15b
 
 # My measurements without proton
 data={}
-data_file_path = "./BSA-CLAS12-JSAG.dat"
+data_file_path = "./BSA-CLAS12-JSAG_FTn.dat"
 with open(data_file_path, 'r', encoding='utf-8') as f:
     file_content = f.read()
 dataset = g.DataSet(datafile=file_content)
@@ -167,10 +169,14 @@ for pt in dataset:
     pt.to_conventions()
 data[dataset.id] = dataset
 g.dset.update(data)
-print('\nJSAG')
-g.describe_data(g.dset[999])
-print('\nJSAG Small |t|')
-pts_Me = g.select(g.dset[999], criteria=['tm < 0.12', 'val != 0'])
+
+#print('\nJSAG')
+#pts_Me = g.dset[999]
+pts_Me = g.select(g.dset[999], criteria=['tm < 0.12'])
+#pts_Me = g.select(g.dset[999], criteria=['val != 0'])
+#pts_Me = g.select(g.dset[999], criteria=['tm < 0.12', 'val != 0'])
+
+#print('\nJSAG Small |t|')
 g.describe_data(pts_Me)
 
 #########################
@@ -179,13 +185,13 @@ g.describe_data(pts_Me)
 
 #th = KMA_H()
 th = KMA()
-#th = KM15();
+#th = g.fits.KM15()
+model_name = 'KMA_ME_FTn_smallt'
+#pts_fit = pts_Volker + pts_Me
+pts_fit = GLO15b + pts_Me
 
-_worker_theory=th
-
-model_name = 'KMA_ME_smallt_pool'
 th.name = model_name
-
+_worker_theory=th
 par_KMA = {'tmv2': 15.94293227053628, 'rS': 1.0, 'alv': 0.43, 'tal': 0.43,
             'mpi2': 15.999998816676918, 'Nv': 1.35, 'rv': 0.918393047884448,
             'Nsea': 0.0, 'alS': 1.13, 'rpi': 2.6463144464701536,  'alpS': 0.15,
@@ -201,16 +207,22 @@ par_KMA = {'tmv2': 15.94293227053628, 'rS': 1.0, 'alv': 0.43, 'tal': 0.43,
             'mg2': 0.7, 'secg': -2.990809378821039, 'thig': 0.9052207712570559,
             'kaps': 0.0, 'kapg': 0.0}
 th.parameters.update(par_KMA)
-#th._release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
-
-# To save the fitted model
-#f = g.MinuitFitter(pts_Volker + pts_Me, th)
-f = g.MinuitFitter(GLO15b + pts_Me, th)
+# Minuit Fitter
+f = g.MinuitFitter(pts_fit, th)
 f.fix_parameters('ALL')
-#f.release_parameters('rv','bS','bv', 'mC2','C')
-f.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
+f.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'ms2', 'secs', 'this', 'secg', 'thig', 'rpi', 'mpi2')
+"""
+# More accurate (and slower) minimization
+f.minuit.strategy = 2
+
+# Allow more function evaluations
+f.minuit.migrad(ncall=100000)
+"""
+print("\nNow doing:", model_name)
+g.describe_data(pts_fit)
 if(True):
 	f.fit()
+	print("Valid minimum? ", f.minuit.valid)     # True if Minuit considers the minimum valid
 
 	fit_results = {
 	    "values": f.minuit.values.to_dict(),
@@ -220,11 +232,11 @@ if(True):
 	}
 
 	# Save to a JSON file
-	with open(f"Global_Fit_{model_name}.json", "w") as fitres:
+	with open(f"Fits/Global_Fit_{model_name}.json", "w") as fitres:
 	    json.dump(fit_results, fitres, indent=4)
 else:
 	# Load saved fit results
-	with open(f"Global_Fit_{model_name}.json", "r") as fitres:
+	with open(f"Fits/Global_Fit_{model_name}.json", "r") as fitres:
 	    fit_results = json.load(fitres)
 
 	# Restore Minuit values
@@ -247,6 +259,7 @@ else:
 
 f.print_parameters()
 
+"""
 plotter = CFFPlotter(
     th,
     t=-0.2,
@@ -256,6 +269,7 @@ plotter = CFFPlotter(
 fig = plotter.plot()
 plt.show()
 plt.savefig(f'figs/{model_name}.pdf')
+"""
 
 #th.predict(pts[0], uncertainty=True)
 #pt = g.DataPoint(xB=0.01, t=-0.2, Q2=10)

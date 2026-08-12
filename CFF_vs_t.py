@@ -25,9 +25,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import gepard as g
 
-
 class CFFPlotter:
-    def __init__(self, theory):
+    def __init__(self, theory, xi=0.1, Q2=10.0, mt_min=0.02, mt_max=1.0, npts=100):
         """
         Plot ImH and ReH as functions of xi for fixed t and Q2.
 
@@ -35,30 +34,53 @@ class CFFPlotter:
         ----------
         theory : Gepard theory object
             Fitted Gepard theory (e.g. th)
+        t : float
+            Momentum transfer
+        Q2 : float
+            Virtuality
+        mt_min, mt_max : float
+            |t| range
+        npts : int
+            Number of points
         """
         self.theory = theory
+        self.xi = xi
+        self.Q2 = Q2
+        self.mt = np.geomspace(mt_min, mt_max, npts)
 
-    @staticmethod
-    def Dterm(t, D0=-1.6, M=0.7, p=3):
-        """D-term parametrization"""
-        return D0/(1-t/M**2)**p
+    def predict_cff(self, observable):
+        """
+        Predict CFF values and uncertainties.
+        """
+        values = []
+        errors = []
 
-    @staticmethod
-    def pressure(r, Dterm, **args):
-        """
-        pressureN function
-        Pressure distribution r^2*p(r) in GeV/fm for given Dterm(t) function
-        """
-        GeVfm = 0.197
-        Mp = 0.938
-        rGeV = r/GeVfm
-        # variable change x=-t^2, so QUADPACK Fourier integral method can be used
-        intg = quad(lambda x: 2*x*(-x**2)*Dterm(-x**2, **args), 0, np.inf, weight='sin', wvar=rGeV)
-        return intg[0]/(24*np.pi**2*Mp*rGeV) * rGeV**2 / GeVfm
+        for mt in self.mt:
+            # Gepard DataPoint expects xB, not xi.
+            # Convert xi -> xB: xi = xB/(2-xB)
+            xi=self.xi
+            xB = 2 * xi / (1 + xi)
+
+            pt = g.DataPoint(
+                xB=xB,
+                t=-1.0*mt,
+                Q2=self.Q2
+            )
+
+            result = self.theory.predict(
+                pt,
+                observable=observable,
+                uncertainty=True
+            )
+
+            values.append(pt.xi*result[0])
+            errors.append(pt.xi*result[1])
+
+        return np.array(values), np.array(errors)
 
     def plot(self, ax=None, label_prefix="", style=''):
         """
-        Produce proton pressure with uncertainty bands.
+        Produce ImH and ReH plots with uncertainty bands.
 
         Parameters
         ----------
@@ -72,7 +94,7 @@ class CFFPlotter:
         fig : matplotlib.figure.Figure
             The figure containing the plot.
         """
-        
+
         if ax is None:
             fig, ax = plt.subplots(figsize=(8, 6))
         else:
@@ -80,53 +102,59 @@ class CFFPlotter:
 
         plt.subplots_adjust(left=0.15, right=0.95, top=0.95, bottom=0.15)
 
-        # Sampling from Gaussian/normal distribution using scipy's stats routines
-        ss = 500 #  sample size
+        cff_labels = {
+            "ImH": r"$\mathfrak{Im}[\mathcal{H}]$",
+            "ReH": r"$\mathfrak{Re}[\mathcal{H}]$",
+            "ImE": r"$\mathfrak{Im}[\mathcal{E}]$",
+            "ReE": r"$\mathfrak{Re}[\mathcal{E}]$",
+            "ImHt": r"$\mathfrak{Im}[\mathcal{\widetilde{H}}]$",
+            "ReHt": r"$\mathfrak{Re}[\mathcal{\widetilde{H}}]$",
+            "ImEt": r"$\mathfrak{Im}[\mathcal{\widetilde{E}}]$",
+            "ReEt": r"$\mathfrak{Re}[\mathcal{\widetilde{E}}]$"
+        }
+        cff_title = {
+            "ImH": r"$\mathcal{H}$",
+            "ReH": r"$\mathcal{H}$",
+            "ImE": r"$\mathcal{E}$",
+            "ReE": r"$\mathcal{E}$",
+            "ImHt": r"$\mathcal{\widetilde{H}}$",
+            "ReHt": r"$\mathcal{\widetilde{H}}$",
+            "ImEt": r"$\mathcal{\widetilde{E}}$",
+            "ReEt": r"$\mathcal{\widetilde{E}}$"
+        }
         
-        d0, M, p = -1.0*self.theory.parameters['C']*18/25, self.theory.parameters['mC2']**0.5, 3.0
-        d0err = self.theory.parameters_errors['C']*18/25
-        M2err = self.theory.parameters_errors['mC2']
-        perr = 0.5 #np.sqrt(0.25**2 + 0.5**2)
-        Merr = M2err/(2*M)
-        print("\n"+label_prefix)
-        print("D(t=0)=", d0, " +- ", d0err)
-        print("M^2=", M*M, " +- ", M2err)
+        for cff in ["ImH", "ReH"]:
+            y, dy = self.predict_cff(cff)
+            print(f"Max uncertainty for {self.theory.name} {cff}: {np.max(dy):.4f}, Min uncertainty: {np.min(dy):.4f}")
+            label = f"{label_prefix} {cff_labels[cff]}".strip()
 
-        d0MC = norm.rvs(d0, d0err, size=ss)
-        MMC = norm.rvs(M, Merr, size=ss)
-        pMC = norm.rvs(p, perr, size=ss)
+            line = ax.plot(
+                self.mt,
+                y
+            )
+            color = line[0].get_color()
+            edgecolor_value = 'black' if label_prefix == "KM15 data," else color
+
+            ax.fill_between(
+                self.mt,
+                y - dy,
+                y + dy,
+                hatch=style,
+                alpha=0.3,
+                label=label,
+                edgecolor=color
+            )
+
+            ax.set_xlabel(r"$|t| [\text{GeV}^2/c^4]$", fontsize=25)
+            ax.set_ylabel(rf"$\xi${cff_title[cff]}", fontsize=25)
+        ax.tick_params(axis='both', labelsize=20)
+
+        ax.legend(fontsize=16)
         
-        rs = np.linspace(0.01,2,200)
-        psmean = []
-        psup = []
-        psdown = []
-        for r in rs:
-            pressMC = []
-            for k in range(ss):
-                pressMC.append(self.pressure(r, self.Dterm, D0=d0MC[k], M=MMC[k], p=pMC[k]))
-            mean, std = 1000*np.mean(pressMC), 1000*np.std(pressMC)
-            psmean.append(mean)
-            psup.append(mean+std)
-            psdown.append(mean-std)
-            
-        line = ax.plot(rs, psmean)
-        color = line[0].get_color()
-        
-        ax.fill_between(rs, psup, psdown,edgecolor=color, linewidth=1, label=label_prefix, alpha=0.3, hatch=style)
-        ax.set_ylabel(r'$r^2 p(r)  [\times 10^{-3}\; {\rm GeV}/{\rm fm}]$', fontsize=30)
-        ax.set_xlabel(r'$r [{\rm fm}]$', fontsize=30)
-        ax.tick_params(axis='both', labelsize=25)
-        
-        ax.axhline(linestyle='--', color='gray', lw=1)
-        ax.set_xlim(0,2)
-        #ax.set_ylim(-8, 17)
-        ax.legend(loc="upper right", fontsize=20)
-        ax.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(30))
-        ax.yaxis.set_minor_locator(matplotlib.ticker.MultipleLocator(5))    
-        ax.xaxis.set_minor_locator(matplotlib.ticker.MultipleLocator(0.1))    
+        ax.grid(True)
+
         return fig
-    
-            
+        
 class KMA(KM15):  # noqa: D101, E501
     def subtraction(self, pt):
         #Dispersion relations subtraction constant.
@@ -178,18 +206,15 @@ par_KMA = {'tmv2': 15.94293227053628, 'rS': 1.0, 'alv': 0.43, 'tal': 0.43,
             'mg2': 0.7, 'secg': -2.990809378821039, 'thig': 0.9052207712570559,
             'kaps': 0.0, 'kapg': 0.0}
 
-th1 = KMA()
+th1 = KM15()
 th2 = KMA()
-th3 = KMA()
+th3 = KM15()
 
 type = "Global_Fit" # "Global_Fit" or "DTerm"
 
-model_name_1 = 'KMA'
-model_name_2 = 'Nature'
-model_name_3 = 'KMA_ME_FTn'
-
-#model_name_1 = 'Nature'
-#model_name_3 = 'Nature_Plus'
+model_name_1 = 'KM15'
+model_name_2 = 'KM15_ME_FTn'
+model_name_3 = 'KM15_ME_FTn_smallt'
 
 th1.name = model_name_1
 th2.name = model_name_2
@@ -202,6 +227,14 @@ th3.parameters.update(par_KMA)
 f1 = g.MinuitFitter(GLO15b, th1)
 f2 = g.MinuitFitter(GLO15b, th2)
 f3 = g.MinuitFitter(GLO15b, th3)
+
+f1.fix_parameters('ALL')
+f2.fix_parameters('ALL')
+f3.fix_parameters('ALL')
+
+f1.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
+f2.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
+f3.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
 
 # Load saved fit results
 with open(f"Fits/{type}_{model_name_1}.json", "r") as fitres:
@@ -248,26 +281,16 @@ th2.parameters_errors = f2.minuit.errors.to_dict()
 th3.parameters_errors = f3.minuit.errors.to_dict()
 
 #f.print_parameters()
-f1.fix_parameters('ALL')
-f2.fix_parameters('ALL')
-f3.fix_parameters('ALL')
 
-f1.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
-f2.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
-f3.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
-
-
-plotter1 = CFFPlotter(th1)
-plotter2 = CFFPlotter(th2)
-plotter3 = CFFPlotter(th3)
+plotter1 = CFFPlotter(th1, xi=0.1)
+plotter2 = CFFPlotter(th2, xi=0.1)
+plotter3 = CFFPlotter(th3, xi=0.1)
 
 fig, ax = plt.subplots(figsize=(8, 6))
 
-plotter1.plot(ax=ax, label_prefix="KM15 data [58]")
-plotter2.plot(ax=ax, label_prefix='CLAS data [10]', style='xx')
-plotter3.plot(ax=ax, label_prefix=r'KM15 data [58] + CLAS12', style='//')
+plotter1.plot(ax=ax, label_prefix='KM15 data,', style='')
+plotter2.plot(ax=ax, label_prefix=r'KM15 data+CLAS12,', style='//')
+#plotter3.plot(ax=ax, label_prefix=r'KM15 data+CLAS12($|t|$$<$$0.12~\text{GeV}^{2}/c^{4})$,', style='//')
 
 plt.show()
-
-plt.show()
-plt.savefig(f'figs/Comparison_DTerm_{type}.pdf')
+plt.savefig(f'figs/Comparison_{type}_vs_t.pdf')

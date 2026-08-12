@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 import gepard as g
 
 class CFFPlotter:
-    def __init__(self, theory, xi=0.1, Q2=10.0, mt_min=0.02, mt_max=1.0, npts=100):
+    def __init__(self, theory, t=-0.2, Q2=10.0, xi_min=0.02, xi_max=0.25, npts=100):
         """
         Plot ImH and ReH as functions of xi for fixed t and Q2.
 
@@ -44,9 +44,9 @@ class CFFPlotter:
             Number of points
         """
         self.theory = theory
-        self.xi = xi
+        self.t = t
         self.Q2 = Q2
-        self.mt = np.geomspace(mt_min, mt_max, npts)
+        self.xi = np.geomspace(xi_min, xi_max, npts)
 
     def predict_cff(self, observable):
         """
@@ -55,15 +55,14 @@ class CFFPlotter:
         values = []
         errors = []
 
-        for mt in self.mt:
+        for xi in self.xi:
             # Gepard DataPoint expects xB, not xi.
             # Convert xi -> xB: xi = xB/(2-xB)
-            xi=self.xi
             xB = 2 * xi / (1 + xi)
 
             pt = g.DataPoint(
                 xB=xB,
-                t=-1.0*mt,
+                t=self.t,
                 Q2=self.Q2
             )
 
@@ -104,7 +103,23 @@ class CFFPlotter:
 
         cff_labels = {
             "ImH": r"$\mathfrak{Im}[\mathcal{H}]$",
-            "ReH": r"$\mathfrak{Re}[\mathcal{H}]$"
+            "ReH": r"$\mathfrak{Re}[\mathcal{H}]$",
+            "ImE": r"$\mathfrak{Im}[\mathcal{E}]$",
+            "ReE": r"$\mathfrak{Re}[\mathcal{E}]$",
+            "ImHt": r"$\mathfrak{Im}[\mathcal{\widetilde{H}}]$",
+            "ReHt": r"$\mathfrak{Re}[\mathcal{\widetilde{H}}]$",
+            "ImEt": r"$\mathfrak{Im}[\mathcal{\widetilde{E}}]$",
+            "ReEt": r"$\mathfrak{Re}[\mathcal{\widetilde{E}}]$"
+        }
+        cff_title = {
+            "ImH": r"$\mathcal{H}$",
+            "ReH": r"$\mathcal{H}$",
+            "ImE": r"$\mathcal{E}$",
+            "ReE": r"$\mathcal{E}$",
+            "ImHt": r"$\mathcal{\widetilde{H}}$",
+            "ReHt": r"$\mathcal{\widetilde{H}}$",
+            "ImEt": r"$\mathcal{\widetilde{E}}$",
+            "ReEt": r"$\mathcal{\widetilde{E}}$"
         }
         
         for cff in ["ImH", "ReH"]:
@@ -113,13 +128,13 @@ class CFFPlotter:
             label = f"{label_prefix} {cff_labels[cff]}".strip()
 
             line = ax.plot(
-                self.mt,
+                self.xi,
                 y
             )
             color = line[0].get_color()
 
             ax.fill_between(
-                self.mt,
+                self.xi,
                 y - dy,
                 y + dy,
                 hatch=style,
@@ -128,8 +143,8 @@ class CFFPlotter:
                 edgecolor=color
             )
 
-        ax.set_xlabel(r"$|t| [\text{GeV}^2/c^4]$", fontsize=25)
-        ax.set_ylabel(r"$\xi*$CFF", fontsize=25)
+            ax.set_xlabel(r"$\xi$")
+            ax.set_ylabel(rf"$\xi${cff_title[cff]}", fontsize=25)
         ax.tick_params(axis='both', labelsize=20)
 
         ax.legend(fontsize=16)
@@ -196,7 +211,7 @@ th3 = KM15()
 type = "Global_Fit" # "Global_Fit" or "DTerm"
 
 model_name_1 = 'KM15'
-model_name_2 = 'KMA'
+model_name_2 = 'KM15_ME'
 model_name_3 = 'KM15_ME_smallt'
 
 th1.name = model_name_1
@@ -220,11 +235,11 @@ f2.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi'
 f3.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'rpi', 'mpi2', 'ms2', 'secs', 'this', 'secg', 'thig')
 
 # Load saved fit results
-with open(f"{type}_{model_name_1}.json", "r") as fitres:
+with open(f"Fits/{type}_{model_name_1}.json", "r") as fitres:
     fit_results_1 = json.load(fitres)
-with open(f"{type}_{model_name_2}.json", "r") as fitres:
+with open(f"Fits/{type}_{model_name_2}.json", "r") as fitres:
     fit_results_2 = json.load(fitres)
-with open(f"{type}_{model_name_3}.json", "r") as fitres:
+with open(f"Fits/{type}_{model_name_3}.json", "r") as fitres:
     fit_results_3 = json.load(fitres)
 
 # Restore Minuit values
@@ -265,15 +280,15 @@ th3.parameters_errors = f3.minuit.errors.to_dict()
 
 #f.print_parameters()
 
-plotter1 = CFFPlotter(th1, xi=0.1)
-plotter2 = CFFPlotter(th2, xi=0.1)
-plotter3 = CFFPlotter(th3, xi=0.1)
+plotter1 = CFFPlotter(th1, t=-0.2, Q2=10)
+plotter2 = CFFPlotter(th2, t=-0.2, Q2=10)
+plotter3 = CFFPlotter(th3, t=-0.1, Q2=10)
 
 fig, ax = plt.subplots(figsize=(8, 6))
 
 plotter1.plot(ax=ax, label_prefix='GLO15b,', style='')
-#plotter2.plot(ax=ax, label_prefix=model_name_2)
-plotter3.plot(ax=ax, label_prefix=r'GLO15b+CLAS12($|t|$$<$$0.12~\text{GeV}^{2}/c^{4})$,', style='//')
+plotter2.plot(ax=ax, label_prefix=r'GLO15b+CLAS12,', style='\\')
+#plotter3.plot(ax=ax, label_prefix=r'GLO15b+CLAS12($|t|$$<$$0.12~\text{GeV}^{2}/c^{4})$,', style='//')
 
 plt.show()
-plt.savefig(f'figs/Comparison_{type}.pdf')
+plt.savefig(f'figs/Comparison_{type}_vs_xi.pdf')
