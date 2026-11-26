@@ -14,7 +14,7 @@ from gepard.fits import th_KM15, KM15
 from gepard.fits import th_AFKM12
 from gepard.fits import GLO15b
 from gepard import cff, data, dvcs, eff, gpd
-
+import math as m
 import os
 import json
 
@@ -24,6 +24,10 @@ if not os.path.exists('figs'):
 import numpy as np
 import matplotlib.pyplot as plt
 import gepard as g
+
+def Multipole_D(t, D0=-1.6, M=0.7, p=3):
+        """D-term parametrization"""
+        return D0/(1-t/M**2)**p
 
 
 class CFFPlotter:
@@ -43,22 +47,9 @@ class CFFPlotter:
         """D-term parametrization"""
         return D0/(1-t/M**2)**p
 
-    @staticmethod
-    def pressure(r, Dterm, **args):
-        """
-        pressureN function
-        Pressure distribution r^2*p(r) in GeV/fm for given Dterm(t) function
-        """
-        GeVfm = 0.197
-        Mp = 0.938
-        rGeV = r/GeVfm
-        # variable change x=-t^2, so QUADPACK Fourier integral method can be used
-        intg = quad(lambda x: 2*x*(-x**2)*Dterm(-x**2, **args), 0, np.inf, weight='sin', wvar=rGeV)
-        return intg[0]/(24*np.pi**2*Mp*rGeV) * rGeV**2 / GeVfm
-
     def plot(self, ax=None, label_prefix="", style=''):
         """
-        Produce proton pressure with uncertainty bands.
+        Produce proton D-term with uncertainty bands.
 
         Parameters
         ----------
@@ -78,7 +69,7 @@ class CFFPlotter:
         else:
             fig = ax.figure
 
-        plt.subplots_adjust(left=0.15, right=0.95, top=0.95, bottom=0.15)
+        plt.subplots_adjust(left=0.17, right=0.95, top=0.95, bottom=0.17)
 
         # Sampling from Gaussian/normal distribution using scipy's stats routines
         ss = 500 #  sample size
@@ -96,34 +87,33 @@ class CFFPlotter:
         MMC = norm.rvs(M, Merr, size=ss)
         pMC = norm.rvs(p, perr, size=ss)
         
-        rs = np.linspace(0.01,2,200)
+        ts = np.linspace(-0.45,0,100)
         psmean = []
         psup = []
         psdown = []
-        for r in rs:
-            pressMC = []
+        for t in ts:
+            dtermMC = []
             for k in range(ss):
-                pressMC.append(self.pressure(r, self.Dterm, D0=d0MC[k], M=MMC[k], p=pMC[k]))
-            mean, std = 1000*np.mean(pressMC), 1000*np.std(pressMC)
+                dtermMC.append(self.Dterm(t, D0=d0MC[k], M=MMC[k], p=pMC[k]))
+            mean, std = np.mean(dtermMC), np.std(dtermMC)
             psmean.append(mean)
             psup.append(mean+std)
             psdown.append(mean-std)
             
-        line = ax.plot(rs, psmean)
+        line = ax.plot(-ts, psmean)
         color = line[0].get_color()
         
-        ax.fill_between(rs, psup, psdown,edgecolor=color, linewidth=1, label=label_prefix, alpha=0.3, hatch=style)
-        ax.set_ylabel(r'$r^2 p(r)  [\times 10^{-3}\; {\rm GeV}/{\rm fm}]$', fontsize=30)
-        ax.set_xlabel(r'$r [{\rm fm}]$', fontsize=30)
+        ax.fill_between(-ts, psup, psdown,edgecolor=color, linewidth=1, label=label_prefix, alpha=0.3, hatch=style)
+        ax.set_ylabel(r'$D^{Q}(t)$', fontsize=30)
+        ax.set_xlabel(r'$|t| [\text{GeV}^{2}/c^{4}]$', fontsize=30)
         ax.tick_params(axis='both', labelsize=25)
         
         ax.axhline(linestyle='--', color='gray', lw=1)
-        ax.set_xlim(0,2)
-        #ax.set_ylim(-8, 17)
-        ax.legend(loc="upper right", fontsize=20)
-        ax.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(30))
-        ax.yaxis.set_minor_locator(matplotlib.ticker.MultipleLocator(5))    
-        ax.xaxis.set_minor_locator(matplotlib.ticker.MultipleLocator(0.1))    
+        ax.set_xlim(0,0.45)
+        ax.set_ylim(-2.4, 1.0)
+        ax.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(0.5))
+        ax.yaxis.set_minor_locator(matplotlib.ticker.MultipleLocator(0.1))    
+        ax.xaxis.set_minor_locator(matplotlib.ticker.MultipleLocator(0.02))    
         return fig
     
             
@@ -186,7 +176,7 @@ type = "Global_Fit" # "Global_Fit" or "DTerm"
 
 model_name_1 = 'KMA'
 model_name_2 = 'Nature'
-model_name_3 = 'KMA_ME_FTn'
+model_name_3 = 'KMA_ME_FTn_correlated'
 
 #model_name_1 = 'Nature'
 #model_name_3 = 'Nature_Plus'
@@ -263,11 +253,25 @@ plotter3 = CFFPlotter(th3)
 
 fig, ax = plt.subplots(figsize=(8, 6))
 
-plotter1.plot(ax=ax, label_prefix="KM15 data [58]")
-plotter2.plot(ax=ax, label_prefix='CLAS data [10]', style='xx')
-plotter3.plot(ax=ax, label_prefix=r'KM15 data [58] + CLAS12', style='//')
+plotter1.plot(ax=ax, label_prefix="KM15")
+#plotter2.plot(ax=ax, label_prefix='CLAS data [10]', style='xx')
+plotter3.plot(ax=ax, label_prefix=r'KM15-B', style='//')
 
-plt.show()
+# Plot Multipole_D for randomly initialized parameter values.
+t_vals = np.linspace(-0.45, 0.0, 100)
+t_CLAS = np.array([0.11,0.15,0.2,0.26,0.34])
+D_CLAS = np.array([-1.57,-1.36,-1.28,-1.10,-0.92])
+D_CLAS_err = np.array([0.1,0.08,0.08,0.07,0.07])
+
+plt.plot(-t_vals, Multipole_D(t_vals, D0=-1.59*(4/5), M= 0.487, p=0.841), color='red', linestyle='--', label='Dispersive analysis [27]')
+plt.plot(-t_vals, Multipole_D(t_vals, D0=-2.35*(4/5), M= 0.646, p=2), color='blue', linestyle=':', label='Chiral Quark Soliton Model [28]')
+plt.plot(-t_vals, Multipole_D(t_vals, D0=-2.27*18/25, M=m.sqrt(1.02), p=2.76), color='black', linestyle='-.', label='CLAS data fit [4,26]')
+plt.errorbar(t_CLAS, D_CLAS*4/5, yerr=D_CLAS_err*4/5, fmt='o', color='black', capsize=3, label='CLAS data [4,26]')
+
+plt.xlabel(r'$|t|\ [\text{GeV}^{2}/c^{4}]$')
+plt.ylabel(r'$D^{Q}(t)$')
+plt.grid(alpha=0.3)
+plt.legend(loc="upper left", fontsize=17, facecolor='white')
 
 plt.show()
 plt.savefig(f'figs/Comparison_DTerm_{type}.pdf')

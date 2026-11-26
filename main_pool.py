@@ -118,6 +118,11 @@ class KMA(g.fits.KM15):  # noqa: D101, E501
         #Dispersion relations subtraction constant.
         return self.parameters['C']/(1.-pt.t/self.parameters['mC2'])**3
 
+class KMA_NO_E(KMA):  # noqa: D101, E501
+  def ImE(self, pt: data.DataPoint):
+      return 0
+  def ReE(self, pt: data.DataPoint):
+      return 0
 
 class KMA_H(KMA):
   def subtraction(self, pt):
@@ -170,25 +175,44 @@ for pt in dataset:
 data[dataset.id] = dataset
 g.dset.update(data)
 
+##Maxime measurements
+data={}
+data_file_path = "./BSA-CLAS12-Defurne_FTn.dat"
+with open(data_file_path, 'r', encoding='utf-8') as f:
+    file_content = f.read()
+dataset = g.DataSet(datafile=file_content)
+for pt in dataset:
+    pt.to_conventions()
+data[dataset.id] = dataset
+g.dset.update(data)
+pts_Maxime = g.select(g.dset[998], criteria=['tm < 0.8', 'val != 0'])
+
 #print('\nJSAG')
 #pts_Me = g.dset[999]
-pts_Me = g.select(g.dset[999], criteria=['tm < 0.12'])
-#pts_Me = g.select(g.dset[999], criteria=['val != 0'])
+#pts_Me = g.select(g.dset[999], criteria=['tm < 0.12'])
+pts_Me = g.select(g.dset[999], criteria=['val != 0'])
 #pts_Me = g.select(g.dset[999], criteria=['tm < 0.12', 'val != 0'])
 
 #print('\nJSAG Small |t|')
-g.describe_data(pts_Me)
+#g.describe_data(pts_Me)
 
 #########################
 # Create model and fit
 #########################
 
 #th = KMA_H()
-th = KMA()
-#th = g.fits.KM15()
-model_name = 'KMA_ME_FTn_smallt'
+#th = KMA()
+#th = KMA_NO_E()
+th = g.fits.KM15()
+model_name = 'KM15_2'
+#model_name = 'KMA_Maxime_FTn_correlated_tlt0p8'
+pts_fit = GLO15b # KM15
 #pts_fit = pts_Volker + pts_Me
-pts_fit = GLO15b + pts_Me
+#pts_fit = GLO15b + pts_Me # KM15 plus ME
+#pts_fit = GLO15b +  pts_Maxime # KM15 plus Maxime
+#pts_fit = GLO15b + g.dset[143] + g.dset[144] + g.dset[998]  # Plus HallA and Maxime
+#pts_fit = GLO15b + g.dset[143] + g.dset[144] + pts_Me # Plus HallA and ME
+#pts_fit = GLO15b + g.dset[143] + g.dset[144] + g.dset[998]  + pts_Me # Plus HallA and Maxime and ME(smallt)
 
 th.name = model_name
 _worker_theory=th
@@ -211,6 +235,14 @@ th.parameters.update(par_KMA)
 f = g.MinuitFitter(pts_fit, th)
 f.fix_parameters('ALL')
 f.release_parameters('mv2', 'rv', 'bv', 'C', 'mC2', 'tmv2', 'trv', 'tbv', 'ms2', 'secs', 'this', 'secg', 'thig', 'rpi', 'mpi2')
+th.add_parameters_limits({'mv2': (0.16, 16.0), 'rv': (0., 8.), 'bv': (0.4, 5.),                              
+                            'C': (-10., 10.), 'mC2': (0.16, 4.), 
+                            'tmv2': (0.16, 16.), 'trv': (0., 8.),
+                            'tbv': (0.4, 5.), 'rpi': (0.1, 5.0), 'mpi2': (0.16, 16.0)})
+f.limit_parameters({'mv2': (0.16, 16.0), 'rv': (0., 8.), 'bv': (0.4, 5.),                              
+                            'C': (-10., 10.), 'mC2': (0.16, 4.), 
+                            'tmv2': (0.16, 16.), 'trv': (0., 8.),
+                            'tbv': (0.4, 5.), 'rpi': (0.1, 5.0), 'mpi2': (0.16, 16.0)})
 """
 # More accurate (and slower) minimization
 f.minuit.strategy = 2
@@ -221,18 +253,51 @@ f.minuit.migrad(ncall=100000)
 print("\nNow doing:", model_name)
 g.describe_data(pts_fit)
 if(True):
-	f.fit()
-	print("Valid minimum? ", f.minuit.valid)     # True if Minuit considers the minimum valid
+    f.fit()
+	
+    """
+    # More accurate (and slower) minimization
+    f.minuit.strategy = 2
 
-	fit_results = {
+    # Run MIGRAD
+    f.minuit.migrad()
+    
+    fit_results = {
 	    "values": f.minuit.values.to_dict(),
 	    "errors": f.minuit.errors.to_dict(),
 	    "fval": f.minuit.fval,
 	    "valid": f.minuit.valid,
 	}
 
+    # Inspect convergence
+    print(f.minuit.fmin)
+
+    # Run HESSE (optional, but useful)
+    f.minuit.hesse()
+
+    # Run MINOS
+    f.minuit.minos()
+
+    # Synchronize HESSE covariance with Gepard
+    f.covsync()
+    """
+    # Inspect convergence
+    print(f.minuit.fmin)
+
+    print("Valid minimum? ", f.minuit.valid)
+    ndf = len(pts_fit) - 15
+    print(f"Total chi2/ndf: {f.minuit.fval:.6g}/{ndf} = {f.minuit.fval / ndf:.6g}")
+    
+    fit_results = {
+	    "values": f.minuit.values.to_dict(),
+	    "errors": f.minuit.errors.to_dict(),
+	    "fval": f.minuit.fval,
+	    "valid": f.minuit.valid,
+	}
+    f.print_parameters()
+
 	# Save to a JSON file
-	with open(f"Fits/Global_Fit_{model_name}.json", "w") as fitres:
+    with open(f"Fits/Global_Fit_{model_name}.json", "w") as fitres:
 	    json.dump(fit_results, fitres, indent=4)
 else:
 	# Load saved fit results

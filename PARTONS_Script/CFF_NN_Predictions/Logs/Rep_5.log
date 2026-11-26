@@ -1,0 +1,1211 @@
+29-10-2026 03:47:09 [INFO] (Partons::printVersion) PARTONS 4.0.0 (http://partons.cea.fr) distributed under GNU Public License
+29-10-2026 03:47:09 [INFO] (Partons::printVersion) Git branch and revision of this version is release-v4/9d7aeec8a40a8160d56f5529eb86d096bfc919cd
+29-10-2026 03:47:09 [INFO] (Partons::printVersion) Built using Elementary-Utils 3.0.0 (release-v3/6ceb8c427b8f4110c32770d8159515539e13f995) and NumA++ 3.0.0 (release-v3/16aa03a0c9b3e9382615007d7b6ed00d4cc689e0)
+[33m29-10-2026 03:47:09 [WARN] (DatabaseManager::init) MYSQL database is currently not available ; Check your connection properties in partons.properties ; Or check if MYSQL server is installed -> (DatabaseManager::init) Can't connect to database : Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2) QMYSQL: Unable to connect[0m
+29-10-2026 03:47:10 [INFO] (DVCSCFFNN::loadParameters) Parameters set for replica 5
+29-10-2026 03:47:10 [INFO] (DVCSConvolCoeffFunctionService::initComputationalThread) Creation of thread : 1
+29-10-2026 03:47:10 [INFO] (ThreadManager::newThread) New thread number: 0
+29-10-2026 03:47:10 [INFO] (DVCSConvolCoeffFunctionService::computeManyKinematic) Thread(s) running ...
+29-10-2026 03:47:12 [INFO] (DVCSConvolCoeffFunctionService::computeManyKinematic) Kinematic(s) already computed: 100
+29-10-2026 03:47:13 [INFO] (ThreadManager::clearAllThread) Delete thread number: 0
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 0
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 0
+xi: 0.1 [none] t: -0.01 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -7.8462482407932 Im: 10.3615985869428
+CFF E: Re: -3.95305738858206 Im: 10.1903272270148
+CFF Ht: Re: 1.51945142618698 Im: 4.59573501963294
+CFF Et: Re: 123.342664957735 Im: 126.081279676101
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 1
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 1
+xi: 0.1 [none] t: -0.02 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -7.30365497164961 Im: 8.75711934811209
+CFF E: Re: -3.95308348159848 Im: 10.1895704513144
+CFF Ht: Re: 1.54747856222777 Im: 4.60810914292543
+CFF Et: Re: 121.148997734703 Im: 126.068807068457
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 2
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 2
+xi: 0.1 [none] t: -0.03 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -6.80827609065862 Im: 7.52264408803173
+CFF E: Re: -3.9531106765918 Im: 10.1888113867249
+CFF Ht: Re: 1.57619325749872 Im: 4.62020539143948
+CFF Et: Re: 119.060238772659 Im: 126.050095041093
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 3
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 3
+xi: 0.1 [none] t: -0.04 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -6.35247115408452 Im: 6.57409021270116
+CFF E: Re: -3.95313868973698 Im: 10.1880500213226
+CFF Ht: Re: 1.60560158451213 Im: 4.63192402050654
+CFF Et: Re: 117.071613845255 Im: 126.025091024789
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 4
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 4
+xi: 0.1 [none] t: -0.05 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -5.93022116378702 Im: 5.84600879706788
+CFF E: Re: -3.95316711990727 Im: 10.1872863429778
+CFF Ht: Re: 1.63570772751577 Im: 4.64314671342297
+CFF Et: Re: 115.178471641197 Im: 125.993666661319
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 5
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 5
+xi: 0.1 [none] t: -0.06 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -5.5368156482113 Im: 5.28764421536011
+CFF E: Re: -3.95319541671959 Im: 10.1865203393435
+CFF Ht: Re: 1.6665136408638 Im: 4.65373351385462
+CFF Et: Re: 113.376288090941 Im: 125.955618732889
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 6
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 6
+xi: 0.1 [none] t: -0.07 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -5.16858807567592 Im: 4.85974742723169
+CFF E: Re: -3.95322284110875 Im: 10.1857519978442
+CFF Ht: Re: 1.69801867364288 Im: 4.66351929188824
+CFF Et: Re: 111.660669174113 Im: 125.910669217158
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 7
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 7
+xi: 0.1 [none] t: -0.08 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -4.82269803388983 Im: 4.5320335331632
+CFF E: Re: -3.95324841673988 Im: 10.1849813056627
+CFF Ht: Re: 1.73021916420319 Im: 4.67230968006339
+CFF Et: Re: 110.027352258454 Im: 125.858464512803
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 8
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 8
+xi: 0.1 [none] t: -0.09 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -4.49695523944256 Im: 4.28117341538056
+CFF E: Re: -3.95327087020443 Im: 10.1842082497264
+CFF Ht: Re: 1.76310801189587 Im: 4.67987640919929
+CFF Et: Re: 108.472205993527 Im: 125.798573873122
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 9
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 9
+xi: 0.1 [none] t: -0.1 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -4.18967924437557 Im: 4.08921891637947
+CFF E: Re: -3.9532885575016 Im: 10.1834328166901
+CFF Ht: Re: 1.7966742385041 Im: 4.68595196738941
+CFF Et: Re: 106.991228747246 Im: 125.730487079158
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 10
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 10
+xi: 0.1 [none] t: -0.11 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -3.89958868585256 Im: 3.9423747451134
+CFF E: Re: -3.95329937376718 Im: 10.1826549929193
+CFF Ht: Re: 1.8309025591004 Im: 4.69022349952224
+CFF Et: Re: 105.580545529567 Im: 125.653611379457
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 11
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 11
+xi: 0.1 [none] t: -0.12 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -3.62571447343584 Im: 3.83004471680576
+CFF E: Re: -3.95330064255902 Im: 10.181874764471
+CFF Ht: Re: 1.86577299205376 Im: 4.69232585960425
+CFF Et: Re: 104.236403292259 Im: 125.567267720771
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 12
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 12
+xi: 0.1 [none] t: -0.13 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -3.36733207823413 Im: 3.74409333578879
+CFF E: Re: -3.95328898021011 Im: 10.1810921170698
+CFF Ht: Re: 1.90126055153653 Im: 4.69183372471078
+CFF Et: Re: 102.955164424019 Im: 125.470686293053
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 13
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 13
+xi: 0.1 [none] t: -0.14 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -3.12390889141473 Im: 3.67827541959652
+CFF E: Re: -3.95326012979763 Im: 10.1803070360854
+CFF Ht: Re: 1.93733508429444 Im: 4.68825267853979
+CFF Et: Re: 101.733298171423 Im: 125.363001413064
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 14
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 14
+xi: 0.1 [none] t: -0.15 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -2.89506336403785 Im: 3.62779626792985
+CFF E: Re: -3.95320875810316 Im: 10.1795195065039
+CFF Ht: Re: 1.97396133712647 Im: 4.68100917559336
+CFF Et: Re: 100.56736960355 Im: 125.243245774109
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 15
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 15
+xi: 0.1 [none] t: -0.16 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -2.68053328797136 Im: 3.58897289928696
+CFF E: Re: -3.95312820751903 Im: 10.1787295128967
+CFF Ht: Re: 2.01109937436102 Im: 4.66943930569091
+CFF Et: Re: 99.4540255934876 Im: 125.110344095104
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 16
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 16
+xi: 0.1 [none] t: -0.17 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -2.48015112014567 Im: 3.55897332303935
+CFF E: Re: -3.95301019313358 Im: 10.1779370393871
+CFF Ht: Re: 2.04870550800291 Im: 4.65277629509099
+CFF Et: Re: 98.3899771046586 Im: 124.963106210739
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 17
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 17
+xi: 0.1 [none] t: -0.18 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -2.29382469549665 Im: 3.5356159308427
+CFF E: Re: -3.95284443313952 Im: 10.1771420696097
+CFF Ht: Re: 2.08673396015115 Im: 4.63013670787643
+CFF Et: Re: 97.3719768310883 Im: 124.80021965633
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 18
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 18
+xi: 0.1 [none] t: -0.19 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -2.12152202973788 Im: 3.51721511607458
+CFF E: Re: -3.95261819817903 Im: 10.1763445866681
+CFF Ht: Re: 2.12513955143631 Im: 4.6005053531342
+CFF Et: Re: 96.3967909326806 Im: 124.620241816535
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 19
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 19
+xi: 0.1 [none] t: -0.2 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.96325919548086 Im: 3.50246237511146
+CFF E: Re: -3.95231576217332 Im: 10.175544573084
+CFF Ht: Re: 2.16388180505979 Im: 4.56271896442111
+CFF Et: Re: 95.4611632082521 Im: 124.421591726979
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 20
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 20
+xi: 0.1 [none] t: -0.21 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.81909047759374 Im: 3.49033458938223
+CFF E: Re: -3.95191773347218 Im: 10.1747420107431
+CFF Ht: Re: 2.20293097878239 Im: 4.51544880362491
+CFF Et: Re: 94.5617695335062 Im: 124.202541642563
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 21
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 21
+xi: 0.1 [none] t: -0.22 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.68910018799361 Im: 3.48002308036567
+CFF E: Re: -3.95140024066226 Im: 10.1739368808307
+CFF Ht: Re: 2.24227669283401 Im: 4.45718245820073
+CFF Et: Re: 93.6951597230589 Im: 123.961208516384
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 22
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 22
+xi: 0.1 [none] t: -0.23 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.57339565648798 Im: 3.47087849063009
+CFF E: Re: -3.95073394193247 Im: 10.1731291637622
+CFF Ht: Re: 2.28194001646687 Im: 4.38620525638572
+CFF Et: Re: 92.8576831091186 Im: 123.695545569446
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 23
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 23
+xi: 0.1 [none] t: -0.24 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.47210102122809 Im: 3.46236766784348
+CFF E: Re: -3.94988282031103 Im: 10.1723188391013
+CFF Ht: Re: 2.32199011557905 Im: 4.3005819275196
+CFF Et: Re: 92.0453930053623 Im: 123.403334174164
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 24
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 24
+xi: 0.1 [none] t: -0.25 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.38535152666299 Im: 3.45403959048704
+CFF E: Re: -3.94880271912671 Im: 10.1715058854709
+CFF Ht: Re: 2.36256685240541 Im: 4.19813939215869
+CFF Et: Re: 91.2539237655085 Im: 123.082176324557
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 25
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 25
+xi: 0.1 [none] t: -0.26 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.31328810408081 Im: 3.44549803240954
+CFF E: Re: -3.94743956242023 Im: 10.1706902804494
+CFF Ht: Re: 2.40391106500859 Im: 4.07645188634578
+CFF Et: Re: 90.4783322517574 Im: 122.72948802327
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 26
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 26
+xi: 0.1 [none] t: -0.27 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.25605206425137 Im: 3.43637916398158
+CFF E: Re: -3.94572719340282 Im: 10.169872000454
+CFF Ht: Re: 2.44640462928736 Im: 3.93283001043231
+CFF Et: Re: 89.7128930689837 Im: 122.342493980191
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 27
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 27
+xi: 0.1 [none] t: -0.28 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.21377977679206 Im: 3.42633266565921
+CFF E: Re: -3.94358475001154 Im: 10.1690510206102
+CFF Ht: Re: 2.49062279270547 Im: 3.76431574406601
+CFF Et: Re: 88.9508337269569 Im: 121.918224088966
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 28
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 28
+xi: 0.1 [none] t: -0.29 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.18659724932433 Im: 3.41500521232451
+CFF E: Re: -3.94091347966073 Im: 10.1682273146009
+CFF Ht: Re: 2.53740161121434 Im: 3.56768597506142
+CFF Et: Re: 88.1839917469037 Im: 121.453512225332
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 29
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 29
+xi: 0.1 [none] t: -0.3 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.17461455332662 Im: 3.40202539455089
+CFF E: Re: -3.93759287484845 Im: 10.1674008544968
+CFF Ht: Re: 2.58792351549043 Im: 3.33946762661856
+CFF Et: Re: 87.4023703460148 Im: 120.944997993091
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 30
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 30
+xi: 0.1 [none] t: -0.31 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.177920074319 Im: 3.38698929164391
+CFF E: Re: -3.93347598664428 Im: 10.1665716105653
+CFF Ht: Re: 2.64382390084174 Im: 3.07596799063525
+CFF Et: Re: 86.5935623478308 Im: 120.389132127099
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 31
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 31
+xi: 0.1 [none] t: -0.32 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.19657459269002 Im: 3.36944601277763
+CFF E: Re: -3.9283837434413 Im: 10.1657395510489
+CFF Ht: Re: 2.7073208838527 Im: 2.77332431422636
+CFF Et: Re: 85.7420029025636 Im: 119.782186343999
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 32
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 32
+xi: 0.1 [none] t: -0.33 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.23060522874081 Im: 3.34888258552838
+CFF E: Re: -3.92209806671107 Im: 10.1649046419184
+CFF Ht: Re: 2.78136853988234 Im: 2.4275769393315
+CFF Et: Re: 84.8279998470861 Im: 119.120268505265
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 33
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 33
+xi: 0.1 [none] t: -0.34 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.27999931165035 Im: 3.32470760199412
+CFF E: Re: -3.91435353271736 Im: 10.1640668465887
+CFF Ht: Re: 2.86983034764464 Im: 2.03477022330732
+CFF Et: Re: 83.8264752998802 Im: 118.399344016383
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 34
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 34
+xi: 0.1 [none] t: -0.35 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.3446982570017 Im: 3.29623303595818
+CFF E: Re: -3.90482727786591 Im: 10.1632261255966
+CFF Ht: Re: 2.97766326654679 Im: 1.59108490054853
+CFF Et: Re: 82.7053323573156 Im: 117.615264421934
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 35
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 35
+xi: 0.1 [none] t: -0.36 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.42459156089164 Im: 3.26265362316968
+CFF E: Re: -3.89312678404931 Im: 10.162382436233
+CFF Ht: Re: 3.11109263157046 Im: 1.09300429001612
+CFF Et: Re: 81.423335235821 Im: 116.763804158115
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 36
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 36
+xi: 0.1 [none] t: -0.37 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.51951103983672 Im: 3.22302315254878
+CFF E: Re: -3.87877510719484 Im: 10.1615357321248
+CFF Ht: Re: 3.27774249420208 Im: 0.537514626568769
+CFF Et: Re: 79.9273582348579 Im: 115.840706379273
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 37
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 37
+xi: 0.1 [none] t: -0.38 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.62922546382947 Im: 3.17622694976317
+CFF E: Re: -3.86119302523359 Im: 10.1606859627562
+CFF Ht: Re: 3.48666404049675 Im: -0.0776633365429025
+CFF Et: Re: 78.14881638348 Im: 114.84173866927
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 38
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 38
+xi: 0.1 [none] t: -0.39 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.75343574396279 Im: 3.12094974617229
+CFF E: Re: -3.83967747865376 Im: 10.1598330729239
+CFF Ht: Re: 3.74817628524069 Im: -0.753818455184847
+CFF Et: Re: 75.9990359493133 Im: 113.762759267138
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 39
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 39
+xi: 0.1 [none] t: -0.4 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -1.89177084490518 Im: 3.05563801499299
+CFF E: Re: -3.81337555528722 Im: 10.1589770021117
+CFF Ht: Re: 4.07340113729838 Im: -1.49098103991173
+CFF Et: Re: 73.3632528753245 Im: 112.599794165015
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 40
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 40
+xi: 0.1 [none] t: -0.41 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -2.04378459505659 Im: 2.97845572164567
+CFF E: Re: -3.7812531285564 Im: 10.1581176837775
+CFF Ht: Re: 4.47334717924187 Im: -2.28765978718057
+CFF Et: Re: 70.0928376948637 Im: 111.349125062218
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 41
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 41
+xi: 0.1 [none] t: -0.42 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -2.20895356243346 Im: 2.88723227528175
+CFF E: Re: -3.74205709273084 Im: 10.1572550445352
+CFF Ht: Re: 4.957389405418 Im: -3.14060618493169
+CFF Et: Re: 65.9952318444967 Im: 110.007387674195
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 42
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 42
+xi: 0.1 [none] t: -0.43 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -2.3866761514407 Im: 2.7794012821141
+CFF E: Re: -3.69426994789192 Im: 10.1563890032158
+CFF Ht: Re: 5.53103225885458 Im: -4.04463241800336
+CFF Et: Re: 60.8209371599102 Im: 108.57167929718
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 43
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 43
+xi: 0.1 [none] t: -0.44 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -2.57627305423754 Im: 2.65192848728434
+CFF E: Re: -3.6360552702537 Im: 10.1555194697892
+CFF Ht: Re: 6.19296474497129 Im: -4.99250988269151
+CFF Et: Re: 54.2467219426506 Im: 107.039673826734
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 44
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 44
+xi: 0.1 [none] t: -0.45 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -2.77698916042174 Im: 2.50122705023203
+CFF E: Re: -3.56519236087842 Im: 10.1546463441237
+CFF Ht: Re: 6.93164823929691 Im: -5.97497288641459
+CFF Et: Re: 45.8539878958865 Im: 105.409741641538
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 45
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 45
+xi: 0.1 [none] t: -0.46 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -2.98799699077068 Im: 2.32305802978114
+CFF E: Re: -3.47899810111642 Im: 10.1537695145568
+CFF Ht: Re: 7.72201663001827 Im: -6.98084532815716
+CFF Et: Re: 35.1009787972345 Im: 103.681070928622
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 46
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 46
+xi: 0.1 [none] t: -0.47 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -3.20840167593759 Im: 2.11241366251
+CFF E: Re: -3.37423376429733 Im: 10.1528888562431
+CFF Ht: Re: 8.52324166379693 Im: -7.99729726373915
+CFF Et: Re: 21.2872048489767 Im: 101.85378619504
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 47
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 47
+xi: 0.1 [none] t: -0.48 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -3.43724745100604 Im: 1.86338070784537
+CFF E: Re: -3.24699425542091 Im: 10.1520042292453
+CFF Ht: Re: 9.2787562917038 Im: -9.01022436472285
+CFF Et: Re: 3.50811641301107 Im: 99.9290589527676
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 48
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 48
+xi: 0.1 [none] t: -0.49 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -3.6735255839077 Im: 1.56898081718086
+CFF E: Re: -3.09257699975351 Im: 10.1511154763171
+CFF Ht: Re: 9.91960378878023 Im: -10.0047284195516
+CFF Et: Re: -19.4022848488909 Im: 97.9092049606302
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 49
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 49
+xi: 0.1 [none] t: -0.5 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -3.91618360254647 Im: 1.22098458097607
+CFF E: Re: -2.9053275193513 Im: 10.1502224203284
+CFF Ht: Re: 10.3715139719384 Im: -10.9656638185361
+CFF Et: Re: -48.943501274676 Im: 95.7977620500132
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 50
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 50
+xi: 0.1 [none] t: -0.51 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -4.16413563494939 Im: 0.809695646539268
+CFF E: Re: -2.67845868910009 Im: 10.1493248612617
+CFF Ht: Re: 10.564955376061 Im: -11.878205999236
+CFF Et: Re: -87.0379902145315 Im: 93.5995425393256
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 51
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 51
+xi: 0.1 [none] t: -0.52 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -4.41627363180411 Im: 0.323701124031608
+CFF E: Re: -2.40384085007441 Im: 10.1484225727018
+CFF Ht: Re: 10.4461655081994 Im: -12.7283949715892
+CFF Et: Re: -136.140499678304 Im: 91.320654632618
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 52
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 52
+xi: 0.1 [none] t: -0.53 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -4.67147920407564 Im: -0.250415526637857
+CFF E: Re: -2.07176052431871 Im: 10.1475152977172
+CFF Ht: Re: 9.9864273604565 Im: -13.5036108980161
+CFF Et: Re: -199.368837578601 Im: 88.9684880513498
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 53
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 53
+xi: 0.1 [none] t: -0.54 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -4.92863578233194 Im: -0.928402718439711
+CFF E: Re: -1.67064663285017 Im: 10.146602744016
+CFF Ht: Re: 9.18711098290803 Im: -14.1929484366263
+CFF Et: Re: -280.655453694737 Im: 86.5516604768168
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 54
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 54
+xi: 0.1 [none] t: -0.55 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -5.18664079062358 Im: -1.72871307352277
+CFF E: Re: -1.18676516552363 Im: 10.1456845782219
+CFF Ht: Re: 8.07922370314724 Im: -14.7874701359123
+CFF Et: Re: -384.915020773861 Im: 84.0799231464543
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 55
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 55
+xi: 0.1 [none] t: -0.56 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -5.44441752716341 Im: -2.67292174768069
+CFF E: Re: -0.603886596150425 Im: 10.1447604190908
+CFF Ht: Re: 6.71787623295908 Im: -15.2803339530497
+CFF Et: Re: -518.215891834623 Im: 81.5640260574342
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 56
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 56
+xi: 0.1 [none] t: -0.57 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -5.70092645667895 Im: -3.78619071237375
+CFF E: Re: 0.0970644771530482 Im: 10.1438298294376
+CFF Ht: Re: 5.17343901410351 Im: -15.666803392638
+CFF Et: Re: -687.931558955904 Im: 79.0155455404556
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 57
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 57
+xi: 0.1 [none] t: -0.58 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -5.95517564433858 Im: -5.09777598151594
+CFF E: Re: 0.938360262623639 Im: 10.1428923064873
+CFF Ht: Re: 3.52173372403322 Im: -15.9441589240543
+CFF Et: Re: -902.830819242078 Im: 76.4466792883998
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 58
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 58
+xi: 0.1 [none] t: -0.59 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -6.20623009697595 Im: -6.64157033127363
+CFF E: Re: 1.94579297103251 Im: 10.1419472702958
+CFF Ht: Re: 1.83533548993703 Im: -16.1115352891858
+CFF Et: Re: -1,173.04199839287 Im: 73.8700160491913
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 59
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 59
+xi: 0.1 [none] t: -0.6 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -6.45321982170232 Im: -8.4566677062866
+CFF E: Re: 3.14892655981399 Im: 10.1409940497919
+CFF Ht: Re: 0.177270800558312 Im: -16.1697110685963
+CFF Et: Re: -1,509.79969027831 Im: 71.2982889131431
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 60
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 60
+xi: 0.1 [none] t: -0.61 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -6.69534646220194 Im: -10.5879267109127
+CFF E: Re: 4.58121270251891 Im: 10.1400318658784
+CFF Ht: Re: -1.40249481751926 Im: -16.1208751627916
+CFF Et: Re: -1,924.85983209287 Im: 68.7441222660406
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 61
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 61
+xi: 0.1 [none] t: -0.62 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -6.93188842614693 Im: -13.0864988022158
+CFF E: Re: 6.27988031807239 Im: 10.1390598108825
+CFF Ht: Re: -2.86807100355861 Im: -15.9683907765329
+CFF Et: Re: -2,429.46684487283 Im: 66.2197829194118
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 62
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 62
+xi: 0.1 [none] t: -0.63 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -7.16220447033805 Im: -16.010271549906
+CFF E: Re: 8.28547621430325 Im: 10.1380768234525
+CFF Ht: Re: -4.19681577544456 Im: -15.716572237927
+CFF Et: Re: -3,032.80083809047 Im: 63.7369456212428
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 63
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 63
+xi: 0.1 [none] t: -0.64 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -7.38573576071015 Im: -19.4241583457474
+CFF E: Re: 10.6408991298945 Im: 10.1370816577598
+CFF Ht: Re: -5.37740504549139 Im: -15.370484540085
+CFF Et: Re: -3,739.95248017353 Im: 61.3064821266897
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 64
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 64
+xi: 0.1 [none] t: -0.65 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -7.60200646996708 Im: -23.4001434428832
+CFF E: Re: 13.3897354117756 Im: 10.1360728455526
+CFF Ht: Re: -6.4074337026083 Im: -14.9357705759597
+CFF Et: Re: -4,549.68016493531 Im: 58.9382813773388
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 65
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 65
+xi: 0.1 [none] t: -0.66 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -7.81062301457569 Im: -28.0169662414964
+CFF E: Re: 16.5736805581577 Im: 10.1350486492016
+CFF Ht: Re: -7.29100420035137 Im: -14.4185070580945
+CFF Et: Re: -5,452.46032006198 Im: 56.641106266981
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 66
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 66
+xi: 0.1 [none] t: -0.67 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -8.01127206399502 Im: -33.3593037125516
+CFF E: Re: 20.2288309953926 Im: 10.1340070033704
+CFF Ht: Re: -8.03657611431493 Im: -13.8250872283974
+CFF Et: Re: -6,429.53189974064 Im: 54.4224901645818
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 67
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 67
+xi: 0.1 [none] t: -0.68 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -8.20371747776764 Im: -39.5162890981823
+CFF E: Re: 24.3806743720479 Im: 10.1329454422727
+CFF Ht: Re: -8.65520280883255 Im: -13.1621266379844
+CFF Et: Re: -7,453.59175343889 Im: 52.2886740320158
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 68
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 68
+xi: 0.1 [none] t: -0.69 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -8.38779634043742 Im: -46.5791953628923
+CFF E: Re: 29.0377175284811 Im: 10.1318610086238
+CFF Ht: Re: -9.1591803316584 Im: -12.4363873723212
+CFF Et: Re: -8,491.40336908911 Im: 50.2445828077939
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 69
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 69
+xi: 0.1 [none] t: -0.7 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -8.56341427063114 Im: -54.6381228665907
+CFF E: Re: 34.1838901563437 Im: 10.1307501392828
+CFF Ht: Re: -9.56107461155673 Im: -11.6547159208656
+CFF Et: Re: -9,507.91778440054 Im: 48.2938378823514
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 70
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 70
+xi: 0.1 [none] t: -0.71 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -8.73054017987262 Im: -63.777574283394
+CFF E: Re: 39.7701575171472 Im: 10.1296085211637
+CFF Ht: Re: -9.87306549222829 Im: -10.8239902434347
+CFF Et: Re: -10,470.8835356714 Im: 46.4388010680717
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 71
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 71
+xi: 0.1 [none] t: -0.72 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -8.88920064986118 Im: -74.070888416426
+CFF E: Re: 45.7061497741219 Im: 10.1284309091323
+CFF Ht: Re: -10.1065391016626 Im: -9.95107228405677
+CFF Et: Re: -11,354.7069676999 Im: 44.6806445156661
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 72
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 72
+xi: 0.1 [none] t: -0.73 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -9.03947408526578 Im: -85.5736478681576
+CFF E: Re: 51.8530128540433 Im: 10.1272108952296
+CFF Ht: Re: -10.2718645793863 Im: -9.04276307118565
+CFF Et: Re: -12,142.6519395667 Im: 43.0194405442333
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 73
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 73
+xi: 0.1 [none] t: -0.74 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -9.18148478382256 Im: -98.3163746425571
+CFF E: Re: 58.0190119873609 Im: 10.1259406154634
+CFF Ht: Re: -10.3783010055166 Im: -8.10575849553108
+CFF Et: Re: -12,827.1327329032 Im: 41.4542652904447
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 74
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 74
+xi: 0.1 [none] t: -0.75 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -9.31539704790064 Im: -112.297068375576
+CFF E: Re: 63.9595608690955 Im: 10.1246103764144
+CFF Ht: Re: -10.4339916256315 Im: -7.14660477722886
+CFF Et: Re: -13,408.4785779393 Im: 39.9833103694491
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 75
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 75
+xi: 0.1 [none] t: -0.76 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -9.44140944283184 Im: -127.47438814116
+CFF E: Re: 69.3832144641883 Im: 10.1232081787232
+CFF Ht: Re: -10.4460130493244 Im: -6.17165345254401
+CFF Et: Re: -13,892.8641944653 Im: 38.6039972878392
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 76
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 76
+xi: 0.1 [none] t: -0.77 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -9.55974928815476 Im: -143.762471700564
+CFF E: Re: 73.9647226814337 Im: 10.1217191078123
+CFF Ht: Re: -10.4204560880477 Im: -5.187016379485
+CFF Et: Re: -14,290.0798314063 Im: 37.3130900660642
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 77
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 77
+xi: 0.1 [none] t: -0.78 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -9.67066744928598 Im: -161.028451258445
+CFF E: Re: 77.3655392113192 Im: 10.1201245535101
+CFF Ht: Re: -10.3625220455311 Im: -4.19852175425913
+CFF Et: Re: -14,611.5960582958 Im: 36.1068023290994
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 78
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 78
+xi: 0.1 [none] t: -0.79 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -9.77443347962445 Im: -179.093592060109
+CFF E: Re: 79.2612831184459 Im: 10.1184012089739
+CFF Ht: Re: -10.2766236941657 Im: -3.21167243659863
+CFF Et: Re: -14,869.1260697599 Im: 34.9808959380005
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 79
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 79
+xi: 0.1 [none] t: -0.8 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -9.87133114713949 Im: -197.738612703919
+CFF E: Re: 79.374568458839 Im: 10.116519784714
+CFF Ht: Re: -10.1664841273921 Im: -2.23160800699652
+CFF Et: Re: -15,073.6993946109 Im: 33.9307690051927
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 80
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 80
+xi: 0.1 [none] t: -0.81 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -9.96165436538152 Im: -216.71316927392
+CFF E: Re: 77.510264332159 Im: 10.1144433545865
+CFF Ht: Re: -10.0352294718163 Im: -1.26307194086196
+CFF Et: Re: -15,235.1598326494 Im: 32.9515318236805
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 81
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 81
+xi: 0.1 [none] t: -0.82 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.0457035367125 Im: -235.748799884224
+CFF E: Re: 73.5885754005021 Im: 10.1121252260952
+CFF Ht: Re: -9.88547335295116 Im: -0.310385111365552
+CFF Et: Re: -15,361.9688695834 Im: 32.0380698210518
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 82
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 82
+xi: 0.1 [none] t: -0.83 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.1237823054163 Im: -254.57399109654
+CFF E: Re: 67.6696301970171 Im: 10.1095061955128
+CFF Ht: Re: -9.71939227028175 Im: 0.622573441376479
+CFF Et: Re: -15,461.2043020664 Im: 31.1850931125069
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 83
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 83
+xi: 0.1 [none] t: -0.84 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.1961947101468 Im: -272.929613256631
+CFF E: Re: 59.9624208691595 Im: 10.1065110070958
+CFF Ht: Re: -9.53879183694317 Im: 1.53237787481458
+CFF Et: Re: -15,538.6684274516 Im: 30.3871725726394
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 84
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 84
+xi: 0.1 [none] t: -0.85 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.263242718787 Im: -290.582897993675
+CFF E: Re: 50.8122594045378 Im: 10.1030437821839
+CFF Ht: Re: -9.34516431793644 Im: 2.41605880658796
+CFF Et: Re: -15,599.0467003322 Im: 29.6387625800853
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 85
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 85
+xi: 0.1 [none] t: -0.86 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.325224124047 Im: -307.338419913488
+CFF E: Re: 40.6652460182689 Im: 10.0989821146518
+CFF Ht: Re: -9.13973816235301 Im: 3.27109859733142
+CFF Et: Re: -15,646.0798928441 Im: 28.9342107236332
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 86
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 86
+xi: 0.1 [none] t: -0.87 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.3824307748306 Im: -323.045110949421
+CFF E: Re: 30.014815330259 Im: 10.0941694393376
+CFF Ht: Re: -8.92352034394079 Im: 4.09541909910323
+CFF Et: Re: -15,682.7289008403 Im: 28.2677548065405
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 87
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 87
+xi: 0.1 [none] t: -0.88 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.4351471163554 Im: -337.599022339183
+CFF E: Re: 19.3415494958559 Im: 10.0884051636783
+CFF Ht: Re: -8.6973323526583 Im: 4.88736258361978
+CFF Et: Re: -15,711.3220020789 Im: 27.6335074618312
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 88
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 88
+xi: 0.1 [none] t: -0.89 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.4836490109992 Im: -350.942185177289
+CFF E: Re: 9.05989168626689 Im: 10.0814319020303
+CFF Ht: Re: -8.46184065339387 Im: 5.64566676614969
+CFF Et: Re: -15,733.6808928686 Im: 27.0254286089151
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 89
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 89
+xi: 0.1 [none] t: -0.9 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.5282028116869 Im: -363.058378274861
+CFF E: Re: -0.517332015572003 Im: 10.0729189570683
+CFF Ht: Re: -8.21758237077766 Im: 6.36943497054898
+CFF Et: Re: -15,751.2254972381 Im: 26.4372858534666
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 90
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 90
+xi: 0.1 [none] t: -0.91 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.5690646601495 Im: -373.966836500791
+CFF E: Re: -9.19211829353552 Im: 10.0624409403605
+CFF Ht: Re: -7.96498688671639 Im: 7.05810254012192
+CFF Et: Re: -15,765.0593860504 Im: 25.8626027691018
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 91
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 91
+xi: 0.1 [none] t: -0.92 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.606479983407 Im: -383.714938915186
+CFF E: Re: -16.8745979552895 Im: 10.0494500983305
+CFF Ht: Re: -7.7043939599287 Im: 7.71140059449954
+CFF Et: Re: -15,776.0383931089 Im: 25.2945948104183
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 92
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 92
+xi: 0.1 [none] t: -0.93 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.6406831632344 Im: -392.370764556509
+CFF E: Re: -23.5631911488936 Im: 10.033240489466
+CFF Ht: Re: -7.43606890045614 Im: 8.32931817479162
+CFF Et: Re: -15,784.8251527332 Im: 24.7260924006471
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 93
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 93
+xi: 0.1 [none] t: -0.94 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.6718973550197 Im: -400.016170450088
+CFF E: Re: -29.3193029827497 Im: 10.0129016175019
+CFF Ht: Re: -7.16021526037306 Im: 8.9120637200477
+CFF Et: Re: -15,791.9321080915 Im: 24.1494505208297
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 94
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 94
+xi: 0.1 [none] t: -0.95 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.7003344342434 Im: -406.740797916943
+CFF E: Re: -34.242691140856 Im: 9.98725843047224
+CFF Ht: Re: -6.8769854365105 Im: 9.46002669020476
+CFF Et: Re: -15,797.7552286064 Im: 23.5564439081769
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 95
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 95
+xi: 0.1 [none] t: -0.96 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.7261950506979 Im: -412.637194850158
+CFF E: Re: -38.4510894457766 Im: 9.95479370637105
+CFF Ht: Re: -6.58648952266604 Im: 9.97374000621385
+CFF Et: Re: -15,802.6003265583 Im: 22.938146756655
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 96
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 96
+xi: 0.1 [none] t: -0.97 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.7496687724743 Im: -417.797075581424
+CFF E: Re: -42.0653556204354 Im: 9.91354771352722
+CFF Ht: Re: -6.28880269753299 Im: 10.4538438274945
+CFF Et: Re: -15,806.703528456 Im: 22.2847956117333
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 97
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 97
+xi: 0.1 [none] t: -0.98 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.7709343036143 Im: -422.308630431214
+CFF E: Re: -45.1998721859486 Im: 9.86098859978842
+CFF Ht: Re: -5.9839713901119 Im: 10.9010510389255
+CFF Et: Re: -15,810.2471588819 Im: 21.5856339748487
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 98
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 98
+xi: 0.1 [none] t: -0.99 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.790159761131 Im: -426.254737009161
+CFF E: Re: -47.9571830309574 Im: 9.79384516403524
+CFF Ht: Re: -5.67201842611358 Im: 11.3161146808153
+CFF Et: Re: -15,813.3720409168 Im: 20.828736996306
+
+29-10-2026 03:47:13 [INFO] (DVCSConvolCoeffFunctionService::printResultListBuffer) 
+DVCSConvolCoeffFunctionResult ChannelType: DVCS ComputationModuleName: DVCSCFFNN IndexId: 99
+
+Kinematics: DVCSConvolCoeffFunctionKinematic ChannelType: DVCS IndexId: 99
+xi: 0.1 [none] t: -1 [GeV2] muF2: 2 [GeV2] muR2: 2 [GeV2] Q2: 2 [GeV2] 
+
+Result: 
+CFF H: Re: -10.8075029988034 Im: -429.711902905339
+CFF E: Re: -50.4256676617558 Im: 9.70789142831761
+CFF Ht: Re: -5.35294732618506 Im: 11.6997974302311
+CFF Et: Re: -15,816.1870074613 Im: 20.000814557839
+
+29-10-2026 03:47:13 [INFO] (LoggerManager::close) ... Closed properly ...

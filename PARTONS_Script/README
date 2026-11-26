@@ -1,0 +1,4 @@
+CFF_NN.sh should be executed in the partons_example directory.
+1. It creates the CFF_NN_Predictions folder and subfolders.
+2. Computed the NN prediction at the kinematics given in kinematics_dvcs_cff_with_units.csv for each replica
+3. Then, it computes the mean and standard deviation of the 101 replicas' prediction. These are the final NN predictions and uncerttainties to report.
